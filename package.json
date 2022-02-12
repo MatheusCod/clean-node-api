@@ -4,7 +4,8 @@
   "description": "Clean API build with NodeJS",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install"
   },
   "lint-staged": {
     "*.js": [
@@ -22,6 +23,7 @@
   },
   "homepage": "https://github.com/MatheusCod/clean-node-api#readme",
   "devDependencies": {
+    "husky": "^7.0.4",
     "lint-staged": "^12.3.3",
     "standard": "^16.0.4"
   }
