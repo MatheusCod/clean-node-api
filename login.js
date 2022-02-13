@@ -16,14 +16,21 @@ class SignUpRouter {
 }
 
 // signup-usecase
-const mongoose = require('mongoose')
-const AccountModel = mongoose.model('Account')
-
 class SignUpUseCase {
   async signUp (email, password, repeatPassword) {
     if (password === repeatPassword) {
-      const user = await AccountModel.create({ email, password })
-      return user
+      new AddAccountRepository().add(email, password, repeatPassword)
     }
+  }
+}
+
+// add-account-repo
+const mongoose = require('mongoose')
+const AccountModel = mongoose.model('Account')
+
+class AddAccountRepository {
+  async add (email, password, repeatPassword) {
+    const user = await AccountModel.create({ email, password })
+    return user
   }
 }
