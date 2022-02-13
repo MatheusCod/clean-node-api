@@ -1,29 +1,48 @@
 
-module.exports = () => {
-  router.post('/signup', new SignUpRouter().route)
-}
-
-// signup-router
 const express = require('express')
 const router = express.Router()
 
-class SignUpRouter {
-  async route (req, res) {
-    const { email, password, repeatPassword } = req.body
-    new SignUpUseCase().signUp(email, password, repeatPassword)
-    res.status(400).json({ error: 'password must be equal to repeatPassword' })
-  }
+module.exports = () => {
+  const customRouter = new SignUpRouter()
+  router.post('/signup', ExpressRouterAdapter.adapt(customRouter))
 }
 
-// signup-usecase
-class SignUpUseCase {
-  async signUp (email, password, repeatPassword) {
-    if (password === repeatPassword) {
-      new AddAccountRepository().add(email, password, repeatPassword)
+class ExpressRouterAdapter {
+  static adapt (router) {
+    return async (req, res) => {
+      const httpRequest = {
+        body: req.body
+      }
+      const httpResponse = await router.route(httpRequest)
+      res.status(httpResponse.statusCode).json(httpResponse.body)
     }
   }
 }
 
+// Presentation
+// signup-router
+class SignUpRouter {
+  async route (httpRequest) {
+    const { email, password, repeatPassword } = httpRequest.body
+    const user = new SignUpUseCase().signUp(email, password, repeatPassword)
+    return {
+      statusCode: 200,
+      body: user
+    }
+  }
+}
+
+// Domain
+// signup-usecase
+class SignUpUseCase {
+  async signUp (email, password, repeatPassword) {
+    if (password === repeatPassword) {
+      return new AddAccountRepository().add(email, password, repeatPassword)
+    }
+  }
+}
+
+/// Infra
 // add-account-repo
 const mongoose = require('mongoose')
 const AccountModel = mongoose.model('Account')
