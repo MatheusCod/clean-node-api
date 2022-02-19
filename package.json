@@ -12,6 +12,9 @@
       "standard"
     ]
   },
+  "standard": {
+    "env": ["jest"]
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/MatheusCod/clean-node-api.git"
