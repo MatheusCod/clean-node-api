@@ -6,10 +6,10 @@ Repository that will be used to store my progress on the ["API em NodeJS com Cle
 ## Objective
 The goal is to build a NodeJS API following [Clean Code](https://github.com/ryanmcdermott/clean-code-javascript) conventions and [TDD](https://en.wikipedia.org/wiki/Test-driven_development).
 
-## Steps (3/23)
+## Steps (4/23)
  - [X] Project Setup
  - [X] Decoupling Components
- - [ ] Login Router (1/4)
+ - [ ] Login Router (2/4)
  - [ ] CI & Jest (0/2)
  - [ ] Email Validator
  - [ ] Auth UseCase (0/4)
