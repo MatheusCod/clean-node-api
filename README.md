@@ -20,7 +20,12 @@ The goal is to build a NodeJS API following [Clean Code](https://github.com/ryan
  - [ ] UpdateAccessToken Repository
  - [ ] Composition Root (0/4)
 
-How to install the project:
+## How to install the project:
 ```
 npm install
+```
+
+## How to run the tests:
+```
+npm test
 ```
