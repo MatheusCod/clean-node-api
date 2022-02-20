@@ -9,7 +9,7 @@ The goal is to build a NodeJS API following [Clean Code](https://github.com/ryan
 ## Steps (4/23)
  - [X] Project Setup
  - [X] Decoupling Components
- - [ ] Login Router (2/4)
+ - [ ] Login Router (2/4) - IN PROGRESS
  - [ ] CI & Jest (0/2)
  - [ ] Email Validator
  - [ ] Auth UseCase (0/4)
